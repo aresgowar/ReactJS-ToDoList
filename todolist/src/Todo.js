@@ -4,21 +4,28 @@ import React from 'react';
 class Todo extends React.Component {
     constructor(props) {
         super(props)
-        console.log('props: ', props);
-        this.state = { id: props.id, value: props.value, done: props.done }
+        // console.log('constructor: ', props);
+        // this.state = { id: props.id, value: props.value, done: props.done }
+        this.state = { data: props.data }
     }
 
-    completeTask = (id) => {
-        // console.log("todo complete", this.props.id);
-        this.setState({ done: true })
-        this.props.completeTask(this.props.id)
+    static getDerivedStateFromProps(props, state) {
+        // console.log('getDerivedStateFromProps: ', props);
+        return { data: props.data };
     }
+
+    // completeTask = (id) => {
+    //     // console.log("todo complete", this.props.id);
+    //     this.setState({ done: true })
+    //     this.props.completeTask(this.props.id)
+    // }
 
     render() {
+        console.log('render: ');
         let checkDone = ''
-        if (!this.state.done) {
+        if (!this.state.data.done) {
             checkDone = (
-                <img 
+                <img
                     src='.\assest\iconfinder_Symbol_-_Check_58687.png'
                     alt='Done'
                     width='25'
@@ -26,14 +33,14 @@ class Todo extends React.Component {
                         { cursor: 'pointer' }}
                     title='Bấm để hoàn thành task'
                     onClick={
-                        () => this.completeTask(this.props.id)}
+                        () => this.props.completeTask(this.state.data.id)}
                 />
             )
         }
         return (
             <div className="todo aligned" >
                 {checkDone}
-                <img className={this.state.done ? 'noCheckDone' : ''}
+                <img className={this.state.data.done ? 'noCheckDone' : ''}
                     src='.\assest\iconfinder_f-cross_256_282471.png'
                     alt='Delete'
                     width='15'
@@ -41,11 +48,11 @@ class Todo extends React.Component {
                         { cursor: 'pointer' }}
                     title='Bấm để xoá task'
                     onClick={
-                        () => this.props.deleteTask(this.props.id)}
-                /> 
+                        () => this.props.deleteTask(this.state.data.id)}
+                />
                 &nbsp; &nbsp;
-                <span className={this.state.done ? 'done' : ''} >
-                    {this.props.value}
+                <span className={this.state.data.done ? 'done' : ''} >
+                    {this.props.data.name}
                 </span>
             </div>
         );

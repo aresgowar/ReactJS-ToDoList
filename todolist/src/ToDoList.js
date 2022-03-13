@@ -66,14 +66,13 @@ class ToDoList extends React.Component {
         <br />
         <ul style={{ paddingLeft: '10px' }}>
           {this.state.tasks.map((value, index) => {
-            console.log('map', value);
+            // console.log('map', value);
             //return <li key={index} className='taskItem'>{value}</li>
             return (
             <Todo
               // ref='todo'
-              key={index}
-              id={value.id}
-              value={value.name}
+              key={value.id}
+              data={value}
               deleteTask={this.deleteTask}
               completeTask={this.completeTask}
             />
