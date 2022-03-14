@@ -26,7 +26,10 @@ class Todo extends React.Component {
         if (!this.state.data.done) {
             checkDone = (
                 <img
-                    src='.\assest\iconfinder_Symbol_-_Check_58687.png'
+                    src={
+                        process.env.PUBLIC_URL +
+                        '/assets/iconfinder_Symbol_-_Check_58687.png'
+                    }
                     alt='Done'
                     width='25'
                     style={
@@ -41,7 +44,10 @@ class Todo extends React.Component {
             <div className="todo aligned" >
                 {checkDone}
                 <img className={this.state.data.done ? 'noCheckDone' : ''}
-                    src='.\assest\iconfinder_f-cross_256_282471.png'
+                    src={
+                        process.env.PUBLIC_URL +
+                        '/assest/iconfinder_f-cross_256_282471.png'
+                    }
                     alt='Delete'
                     width='15'
                     style={

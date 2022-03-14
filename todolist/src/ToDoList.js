@@ -20,14 +20,14 @@ class ToDoList extends React.Component {
     }
     const id = this.state.tasks.length
     const name = this.state.taskName
-    this.state.tasks.push({id, name, done: false})
+    this.state.tasks.push({ id, name, done: false })
     this.setState({ taskName: '' })
   }
 
   deleteTask = (id) => {
     // console.log("delete", id);
     const tasks = this.state.tasks.filter((task) => task.id !== id)
-    this.setState({tasks})
+    this.setState({ tasks })
   }
 
   completeTask = (id) => {
@@ -36,9 +36,9 @@ class ToDoList extends React.Component {
     tasks.forEach(task => {
       if (task.id === id) {
         task.done = true
-      } 
+      }
     })
-    this.setState({tasks})
+    this.setState({ tasks })
   }
 
   render() {
@@ -49,7 +49,10 @@ class ToDoList extends React.Component {
         <br />
         <div className="aligned">
           <img
-            src='.\assest\iconfinder_gnome-app-install_29240 (1).png'
+            src={
+              process.env.PUBLIC_URL +
+              '/assets/iconfinder_gnome-app-install_29240 (1).png'
+            }
             alt='Add Task'
             width='25'
             style={{ cursor: 'pointer' }}
@@ -69,13 +72,13 @@ class ToDoList extends React.Component {
             // console.log('map', value);
             //return <li key={index} className='taskItem'>{value}</li>
             return (
-            <Todo
-              // ref='todo'
-              key={value.id}
-              data={value}
-              deleteTask={this.deleteTask}
-              completeTask={this.completeTask}
-            />
+              <Todo
+                // ref='todo'
+                key={value.id}
+                data={value}
+                deleteTask={this.deleteTask}
+                completeTask={this.completeTask}
+              />
             )
           })}
         </ul>
