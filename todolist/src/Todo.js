@@ -46,7 +46,7 @@ class Todo extends React.Component {
                 <img className={this.state.data.done ? 'noCheckDone' : ''}
                     src={
                         process.env.PUBLIC_URL +
-                        '/assest/iconfinder_f-cross_256_282471.png'
+                        '/assets/iconfinder_f-cross_256_282471.png'
                     }
                     alt='Delete'
                     width='15'
